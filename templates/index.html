@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>zoes</h1>
+    <hr>
+    {{school.name}}
+    <hr>
+    {{name}}
+    <hr>
+    {{testlist}}
+    <hr>
+    {{testdict.d.2}}
+    <hr>
+    {% if testdict.a > 500 %}
+    testdict.a dispaly={{testdict.a}}
+    {% else %}
+    <!--&lt;=500-->
+    <= 500
+    {% endif %}
+    <hr>
+    <ul>
+        {% for k in testdict.keys%}
+        <li>
+            testdict key = {{k}}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul>
+        {% for k in testlist reversed %}
+        {{forloop.first}}
+        {{forloop.last}}
+        <li>
+            {{forloop.revcounter0}} item = {{k}}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    {% ifequal testdict.a 100 %}
+        equal
+    {% else %}
+        not equal
+    {% endifequal %}
+    <hr>
+    {% csrf_token %}
+    <hr>
+    {{testdict.c.name|upper}}
+    <hr>
+    {{testlist|join:"-"}}
+    <hr>
+    {{testdict.e|yesno:"true,false,none"}}
+    <hr>
+    {{testdict.a|add:"100"}}
+    <hr>
+    {{testdict.a|divisibleby:3}}
+    <hr>
+    <ul>
+        {% for i in my_dict.c %}
+        <li style="color:{{forloop.counter|divisibleby:'2'|yesno:'red,blue'}}">
+            <!--{{forloop.counter|divisibleby:2}}-->
+            {{forloop.counter}} {{i|add:"100"}}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <table>
+        {% for i in new_list %}
+        <tr style="background-color:{% cycle 'red' 'blue' %}">
+            {% for j in new_list %}
+            {% widthratio i 1 j as product %}
+            <td>
+                {{i}}x{{j}}={{product}}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+<hr>
+</body>
+</html>
+
+
+
+
+
